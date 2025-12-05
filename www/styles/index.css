@@ -1,0 +1,419 @@
+:root {
+  /* Paleta de colores luminosa */
+  --bg-app: #f3f4f6; /* Gris muy claro de fondo */
+  --bg-panel: #ffffff; /* Blanco puro para tarjetas */
+  --text-main: #1f2937; /* Gris muy oscuro para texto */
+  --text-muted: #6b7280; /* Gris medio para detalles */
+
+  /* Color de acento (Azul/Índigo corporativo) */
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+
+  /* Colores de estado */
+  --danger: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
+
+  --radius: 12px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --border: 1px solid #e5e7eb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Cabecera --- */
+.topbar {
+  height: 64px;
+  background-color: var(--bg-panel);
+  border-bottom: var(--border);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+}
+
+.window-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.circle-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+}
+.circle-btn:nth-child(1) {
+  background-color: #ff5f56;
+} /* Rojo */
+.circle-btn:nth-child(2) {
+  background-color: #ffbd2e;
+} /* Amarillo */
+.circle-btn:nth-child(3) {
+  background-color: #27c93f;
+} /* Verde */
+
+/* --- Botones Principales (Acciones) --- */
+.actions {
+  padding: 24px 32px 0 32px;
+  display: flex;
+  gap: 12px;
+}
+
+.actions button {
+  padding: 10px 20px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actions button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(79, 70, 229, 0.3);
+}
+
+/* --- Layout Principal --- */
+.content {
+  display: flex;
+  padding: 24px 32px;
+  gap: 24px;
+  flex: 1;
+  overflow: hidden; /* Evita doble scroll */
+}
+
+/* --- Sidebar / Categorías --- */
+.categories-box {
+  width: 280px;
+  background: var(--bg-panel);
+  border-radius: var(--radius);
+  border: var(--border);
+  box-shadow: var(--shadow-sm);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.categories-box h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.categories-box ul {
+  list-style: none;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.categories-box li {
+  padding: 10px 14px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-main);
+  transition: background 0.15s;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+}
+
+.categories-box li:hover {
+  background-color: #f9fafb;
+}
+
+.categories-box li.active {
+  background-color: #eef2ff;
+  color: var(--primary);
+  font-weight: 600;
+  border-color: #e0e7ff;
+}
+
+.delete-category-btn {
+  opacity: 0;
+  font-size: 0.8rem;
+  padding: 4px;
+  border-radius: 4px;
+  background: transparent;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.categories-box li:hover .delete-category-btn {
+  opacity: 1;
+}
+
+.delete-category-btn:hover {
+  background-color: #fee2e2;
+  color: var(--danger);
+}
+
+/* --- Área Principal (Tabla) --- */
+.sites-box {
+  flex: 1;
+  background: var(--bg-panel);
+  border-radius: var(--radius);
+  border: var(--border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sites-table-wrapper {
+  overflow-x: auto;
+  flex: 1;
+}
+
+.sites-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.sites-table th {
+  background-color: #f9fafb;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  border-bottom: var(--border);
+}
+
+.sites-table td {
+  padding: 16px 24px;
+  border-bottom: var(--border);
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.sites-table tr:hover td {
+  background-color: #f9fafb;
+}
+
+.sites-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- Componentes de Tabla --- */
+.password-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.password-field {
+  background: #f3f4f6;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-family: "Courier New", monospace;
+  width: 120px;
+  color: var(--text-main);
+  transition: border 0.2s;
+}
+
+.password-field:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: white;
+}
+
+.toggle-pass-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+.toggle-pass-btn:hover {
+  color: var(--primary);
+}
+
+/* --- Botones de Acción (Tabla) --- */
+.action-btn {
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: all 0.2s;
+  color: var(--text-muted);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn.open:hover {
+  border-color: var(--success);
+  color: var(--success);
+}
+.action-btn.edit:hover {
+  border-color: var(--warning);
+  color: var(--warning);
+}
+.action-btn.delete:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* --- Popups y Formularios (Modal Add Category) --- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  transition: opacity 0.2s;
+}
+
+.hidden {
+  display: none;
+}
+
+.popup {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f3f4f6;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.popup h3 {
+  margin-bottom: 24px;
+  font-size: 1.25rem;
+  color: var(--text-main);
+}
+
+.popup label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.popup input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 20px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.popup input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.popup-buttons button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  font-size: 0.9rem;
+}
+
+.popup-buttons .cancel {
+  background: white;
+  border: 1px solid #d1d5db;
+  color: var(--text-main);
+}
+.popup-buttons .cancel:hover {
+  background: #f9fafb;
+}
+
+.popup-buttons .ok {
+  background: var(--primary);
+  color: white;
+}
+.popup-buttons .ok:hover {
+  background: var(--primary-hover);
+}
+
+/* --- Responsive --- */
+@media (width < 1140px) {
+  .content {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .categories-box {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+  }
+
+  .sites-box {
+    overflow: visible;
+  }
+}

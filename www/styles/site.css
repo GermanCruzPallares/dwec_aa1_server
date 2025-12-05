@@ -1,0 +1,196 @@
+:root {
+  /* Misma paleta que index.css para consistencia */
+  --bg-app: #f3f4f6;
+  --bg-panel: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --danger: #ef4444;
+
+  --radius: 12px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --border: 1px solid #e5e7eb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Cabecera --- */
+.topbar {
+  height: 64px;
+  background-color: var(--bg-panel);
+  border-bottom: var(--border);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+}
+
+.window-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.circle-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+}
+.circle-btn:nth-child(1) {
+  background-color: #ff5f56;
+}
+.circle-btn:nth-child(2) {
+  background-color: #ffbd2e;
+}
+.circle-btn:nth-child(3) {
+  background-color: #27c93f;
+}
+
+/* --- Layout del Formulario --- */
+.content {
+  display: flex;
+  justify-content: center;
+  padding: 40px 32px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 600px;
+  background: var(--bg-panel);
+  border-radius: var(--radius);
+  border: var(--border);
+  box-shadow: var(--shadow-md);
+  padding: 32px;
+  height: fit-content;
+}
+
+.form-container h2 {
+  font-size: 1.5rem;
+  color: var(--text-main);
+  margin-bottom: 24px;
+  font-weight: 700;
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 16px;
+}
+
+/* --- Estilos de Inputs --- */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+input[type="text"],
+input[type="url"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+  color: var(--text-main);
+  background-color: white;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Botón generar password */
+#btn-generate {
+  margin-top: 8px;
+  background: transparent;
+  border: 1px solid #e5e7eb;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#btn-generate:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* --- Botones de Acción (Guardar/Cancelar) --- */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid #f3f4f6;
+}
+
+button {
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+/* Botón Cancelar */
+#btn-cancel {
+  background-color: white;
+  border: 1px solid #d1d5db;
+  color: var(--text-main);
+}
+#btn-cancel:hover {
+  background-color: #f9fafb;
+}
+
+/* Botón Guardar */
+#btn-save {
+  background-color: var(--primary);
+  color: white;
+  box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+}
+#btn-save:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(79, 70, 229, 0.3);
+}

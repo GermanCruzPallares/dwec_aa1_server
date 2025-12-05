@@ -1,29 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <main>
-    <ul></ul>
-  </main>
-  <script>
-    let drawData = (data) => {
-      data.forEach(category => {
-        let parent = document.getElementsByTagName('ul')[0]
-        let child = document.createElement('li')
-        // child.innerText = JSON.stringify(category)
-        child.innerText = category.name
-        parent.appendChild(child)
-      })
-    }
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pass saver</title>
+    <link rel="stylesheet" href="./styles/index.css" />
+    <script src="./scripts/main.js" defer></script>
+  </head>
 
-    fetch("http://localhost:3000/categories")
-      .then(res => res.json())
-      .then(data => drawData(data))
-  </script>
-</body>
+  <body>
+    <header class="topbar">
+      <h1>Pass saver</h1>
+      <div class="window-buttons">
+        <button class="circle-btn"></button>
+        <button class="circle-btn"></button>
+        <button class="circle-btn"></button>
+      </div>
+    </header>
+
+    <main>
+      <div class="actions">
+        <button id="btn-add-category">Add category</button>
+        <button id="btn-add-site">Add site</button>
+      </div>
+
+      <div class="content">
+        <aside class="categories-box">
+          <h3>Categories</h3>
+          <ul id="categories-list"></ul>
+        </aside>
+
+        <section class="sites-box">
+          <table class="sites-table">
+            <thead>
+              <tr>
+                <th>Sitio</th>
+                <th>User</th>
+                <th>Password</th>
+                <th>Created at</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="sites-body"></tbody>
+          </table>
+        </section>
+      </div>
+    </main>
+
+    <div id="popup-overlay" class="overlay hidden">
+      <div class="popup">
+        <h3>Nueva categoría</h3>
+
+        <label for="new-category-name">Nombre</label>
+        <input
+          type="text"
+          id="new-category-name"
+          placeholder="Introduce nombre..."
+        />
+
+        <div class="popup-buttons">
+          <button id="btn-cancel-category" class="cancel">Cancel</button>
+          <button id="btn-ok-category" class="ok">OK</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

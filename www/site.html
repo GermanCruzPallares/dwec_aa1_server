@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add site</title>
+
+    <link rel="stylesheet" href="./styles/site.css" />
+    <script src="./scripts/site.js" defer></script>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <h1>Pass saver</h1>
+      <div class="window-buttons">
+        <button class="circle-btn"></button>
+        <button class="circle-btn"></button>
+        <button class="circle-btn"></button>
+      </div>
+    </header>
+
+    <main class="form-container">
+      <label>Name</label>
+      <input id="input-name" type="text" placeholder="Ej: Google" />
+
+      <label>URL</label>
+      <input id="input-url" type="text" placeholder="http://example.com" />
+
+      <label>User</label>
+      <input id="input-user" type="text" placeholder="username" />
+
+      <label>Password</label>
+      <div class="password-box">
+        <input id="input-password" type="password" placeholder="********" />
+        <button id="toggle-password" class="toggle-btn">👁</button>
+        <button id="btn-generate" class="generate-btn">🔒</button>
+      </div>
+
+      <label>Description</label>
+      <textarea id="input-description"></textarea>
+
+      <div class="buttons">
+        <button id="btn-cancel" class="cancel">Cancel</button>
+        <button id="btn-save" class="save">Save</button>
+      </div>
+    </main>
+  </body>
+</html>
